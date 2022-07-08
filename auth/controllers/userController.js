@@ -1,7 +1,7 @@
 const ApiError = require('../error/ApiError');
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const {Users} = require('../models/user')
+const User = require('../models/user')
 
 const generateJwt = (id, email, role) => {
     return jwt.sign(
@@ -15,12 +15,14 @@ class UserController {
     async registration(req, res, next) {
         try {
             const {email, password, role} = req.body
+            console.log(email)
+            console.log(password)
             console.log(role)
             if (!email || !password) {
                 return next(ApiError.badRequest('Некорректный email или password'))
             }
 
-            const candidate = await Users.findOne({
+            const candidate = await User.findOne({
                 where: {email}
             });
             console.log(candidate);
@@ -28,7 +30,7 @@ class UserController {
                 return next(ApiError.badRequest('Пользователь с таким email уже существует'))
             }
             const hashPassword = await bcrypt.hash(password, 5)
-            const user = await Users.create({email, role, password: hashPassword})
+            const user = await User.create({email, role, password: hashPassword})
             const token = generateJwt(user.id, user.email, user.role)
             return res.json({token})
         }catch (e){
@@ -40,7 +42,7 @@ class UserController {
     async login(req, res, next) {
         try {
             const {email, password} = req.body
-            const user = await Users.findOne({where: {email}})
+            const user = await User.findOne({where: {email}})
             if (!user) {
                 return next(ApiError.internal('Пользователь не найден'))
             }
