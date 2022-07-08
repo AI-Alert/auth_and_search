@@ -15,13 +15,15 @@ class UserController {
     async registration(req, res, next) {
         try {
             const {email, password, role} = req.body
-            console.log(email)
+            console.log(role)
             if (!email || !password) {
                 return next(ApiError.badRequest('Некорректный email или password'))
             }
 
-            const candidate = await Users.findOne({where: {email}})
-
+            const candidate = await Users.findOne({
+                where: {email}
+            });
+            console.log(candidate);
             if (candidate) {
                 return next(ApiError.badRequest('Пользователь с таким email уже существует'))
             }
