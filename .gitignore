@@ -1,0 +1,3 @@
+# Project exclude paths
+/auth/node_modules/
+/search/node_modules/
