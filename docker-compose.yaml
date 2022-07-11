@@ -1,0 +1,40 @@
+version: "3.7"
+
+services:
+  search:
+    environment:
+      NODE_ENV: "docker"
+    build:
+      context: ./search
+      dockerfile: Dockerfile.Local
+    image: ai-alert/search
+    volumes:
+      - ./search:/package/search
+    ports:
+      - "4000:4000"
+    healthcheck:
+      test: []
+      interval: 20s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    env_file: ./search/.env
+
+  auth:
+    environment:
+      NODE_ENV: "docker"
+    build:
+      context: ./auth
+      dockerfile: Dockerfile.Local
+    image: ai-alert/auth
+    volumes:
+      - ./auth:/package/auth
+    ports:
+      - "4000:4000"
+    healthcheck:
+      test: [ ]
+      interval: 20s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    env_file: auth/.env
