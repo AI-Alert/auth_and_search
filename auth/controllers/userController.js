@@ -15,9 +15,9 @@ class UserController {
     async registration(req, res, next) {
         try {
             const {email, password, role} = req.body
-            console.log(email)
-            console.log(password)
-            console.log(role)
+            // console.log(email)
+            // console.log(password)
+            // console.log(role)
             if (!email || !password) {
                 return next(ApiError.badRequest('Некорректный email или password'))
             }
@@ -58,7 +58,7 @@ class UserController {
 
     }
 
-    async check(req, res, next) {
+    async check(req, res) {
         const token = generateJwt(req.user.id, req.user.email, req.user.role)
         return res.json({token})
     }
