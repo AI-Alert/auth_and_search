@@ -85,7 +85,6 @@ const RootMutationType = new GraphQLObjectType({
             },
         },
 
-
         updatePostTitle: {
             type: new GraphQLList(PostsType),
             args: {
