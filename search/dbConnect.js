@@ -8,7 +8,7 @@ const dbConnect = () => {
         console.log("Database connection error :" + err);
     });
     mongoose.connection.on("disconnected", () => {
-        console.log("You disconnecred from database");
+        console.log("You disconnected from database");
     });
 };
 

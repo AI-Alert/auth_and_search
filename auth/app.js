@@ -3,7 +3,7 @@ const express = require('express')
 const sequelize = require('./db')
 const models = require('./models/user')
 const cors = require('cors')
-const router = require('./routes/index')
+const router = require('./routes')
 const errorHandler = require('./middleware/ErrorHandlingMiddleware')
 const path = require('path')
 

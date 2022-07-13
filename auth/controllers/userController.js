@@ -34,7 +34,7 @@ class UserController {
             const token = generateJwt(user.id, user.email, user.role)
             return res.json({token})
         }catch (e){
-            console.log(e)
+            next(e)
         }
 
     }
@@ -53,7 +53,7 @@ class UserController {
             const token = generateJwt(user.id, user.email, user.role)
             return res.json({token})
         } catch (e){
-            console.log(e);
+            next(e)
         }
 
     }

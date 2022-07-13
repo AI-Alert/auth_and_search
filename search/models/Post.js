@@ -6,6 +6,7 @@ const postSchema = new mongoose.Schema({
     tag: {type: [String], required: true},
     createdAt: {type: Date, required: true, default: Date.now()},
     updatedAt: {type: Date, required: true, default: Date.now()},
+    watched: {type: Boolean, default: false}
 });
 
 module.exports = mongoose.model("post", postSchema);
