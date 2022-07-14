@@ -4,6 +4,7 @@ const schema = require('../schema/postSchema')
 const {graphqlHTTP} = require("express-graphql");
 
 
+
 router.use('/', graphqlHTTP({
     graphiql: true,
     schema: schema

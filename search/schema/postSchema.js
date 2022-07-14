@@ -35,7 +35,7 @@ const PostsType = new GraphQLObjectType({
 
 //Mutation
 
-const RootMutationType = new GraphQLObjectType({
+const PostMutationType = new GraphQLObjectType({
     name: 'Mutation',
     fields: {
         addPost: {
@@ -104,7 +104,7 @@ const RootMutationType = new GraphQLObjectType({
 });
 
 
-const RootQueryType = new GraphQLObjectType({
+const PostQueryType = new GraphQLObjectType({
     name: 'Query',
     fields: {
         post: {
@@ -124,8 +124,8 @@ const RootQueryType = new GraphQLObjectType({
 });
 
 module.exports = new GraphQLSchema({
-    query: RootQueryType,
-    mutation: RootMutationType,
+    query: PostQueryType,
+    mutation: PostMutationType,
 });
 
 

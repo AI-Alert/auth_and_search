@@ -5,7 +5,8 @@ const models = require('./models/user')
 const cors = require('cors')
 const router = require('./routes')
 const errorHandler = require('./middleware/ErrorHandlingMiddleware')
-const path = require('path')
+const graphqlHTTP = require('express-graphql');
+const schema = require('./schema/userSchema');
 
 const PORT = process.env.PORT || 5000
 
