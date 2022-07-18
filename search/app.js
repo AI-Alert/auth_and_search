@@ -1,5 +1,7 @@
 require("dotenv").config()
 const express = require('express')
+const redisClient = require('redis').createClient;
+const redis = redisClient(6379, 'localhost');
 const dbConnect = require ('./dbConnect')
 const router = require('./routes/index')
 const cors = require('cors')

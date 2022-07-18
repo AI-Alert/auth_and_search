@@ -106,7 +106,7 @@ class PostConroller {
     }
 
 
-    async changeOnePost(req, res) {
+    async  changeOnePost(req, res) {
         try {
             Post.findOneAndUpdate({
                 _id: req.params.id
