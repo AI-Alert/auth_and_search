@@ -1,6 +1,9 @@
 const Post = require("../models/Post");
 
+
+
 class PostConroller {
+
 
     async getAllPostsSearch(req, res) {
         try {
